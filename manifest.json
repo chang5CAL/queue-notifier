@@ -1,0 +1,31 @@
+{
+"manifest_version": 2,
+    "name": "Queue/Status Notifier",
+    "description": "Notifies when you are 1st or 2nd in the queue, or when you are in a non-Ready state for over 4 minutes.",
+    "version": "1.2",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "storage"
+    ]
+}

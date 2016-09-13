@@ -1,0 +1,1 @@
+This is your Chrome extension which notifies you when you are at the top oft he call queue, or in a non-Ready state beyond 4 minutes.
