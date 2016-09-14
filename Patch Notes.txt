@@ -1,0 +1,8 @@
+1.1 - Various updates, fixes, and entered the Chrome Extension detail for Chrome/web store
+1.2 - Added a manual page refresh to update the page. MS Ajax is inteferring with the built in page refresh of the webpage
+    - Extension was running on other report pages of the queue because of the Table ID. Forced to run on specific url
+1.3 - Added the hour counter to keep track of people in the queue for more then 1 hour.
+    - The extension now auto. sorts the viewing table by State Duration (time in status)
+1.4 - Fixed the seconds bug, where it would disregard multiple people at the same minute park, and only count one
+      It would only keep track of the first extension that is checked at that minute mark
+1.5 - Re-structured the main code to include support for up to 3 queues at once

@@ -166,13 +166,13 @@ port.onMessage.addListener(function(message,sender){
 
     for (var i = 0; i < MAX; i++) {
       if (overNotReadyList[i]) {
-        document.getElementById('popup-text').innerText += "Group " + i + " has been non-Ready for " + (bestList[i].seconds / 60) + " minutes!";
+        document.getElementById('popup-text').innerText += "You have been non-Ready for " + (bestList[i].seconds / 60) + " minutes!";
         change = true;
       } else if (bestList[i].id == mainIdList[i]) {
-        document.getElementById('popup-text').innerText += "Group " + i + " is on top of the queue!";
+        document.getElementById('popup-text').innerText += "You are 1st in queue " + i + "!";
         change = true;
-      } else if (secondBest[i].id == mainIdList[i]) {
-        document.getElementById('popup-text').innerText += "Group " + i + " is 2nd in the queue";
+      } else if (secondBestList[i].id == mainIdList[i]) {
+        document.getElementById('popup-text').innerText += "You are 2nd in queue " + i + "!";
         change = true;
       }      
     }

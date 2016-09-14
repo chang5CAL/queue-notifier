@@ -2,7 +2,7 @@
 "manifest_version": 2,
     "name": "Queue/Status Notifier",
     "description": "Notifies when you are 1st or 2nd in the queue, or when you are in a non-Ready state for over 4 minutes.",
-    "version": "1.2",
+    "version": "1.5",
     "content_scripts": [
         {
             "matches": [
