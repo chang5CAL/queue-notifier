@@ -123,7 +123,7 @@ port.onMessage.addListener(function(message,sender){
       document.getElementById('abc').style.display = "block";
       window.setTimeout(function() {
         document.getElementById('abc').style.display = "none";
-      }, 3000);
+      }, 30000);
     }
 
     for (var i = 0; i < elements.length; i++) {
@@ -131,9 +131,8 @@ port.onMessage.addListener(function(message,sender){
       if (element.childNodes.length == 10) {
         var id = parseInt(element.childNodes[3].innerText);
         for (j = 0; j < MAX; j++) {
-          console.log(idsList);
+          //console.log(idsList);
           if (idsList[j].indexOf(id) != -1 || id == mainIdList[j]) {
-            console.log("looking at " + id);
             var status = element.childNodes[4].innerText;
             var time = element.childNodes[5].innerText.split(":");
             var seconds = 0;
@@ -149,9 +148,11 @@ port.onMessage.addListener(function(message,sender){
                 swapSecondBest(id, seconds, j);
               }
             } else if (id == mainIdList[j] && (status == "Not Ready" || status == "Work Ready")) {
-              if (time > 4 * 60) {
-                bestList[j].seconds = time;
+              console.log("in the not ready status");
+              if (seconds > 4 * 60) {
+                bestList[j].seconds = seconds;
                 overNotReadyList[j] = true;
+                console.log("not true list");
                 break;
               }
             }
@@ -159,20 +160,23 @@ port.onMessage.addListener(function(message,sender){
         }
       }
     }
+    console.log("best list");
     console.log(bestList);
+    console.log("second best list");
     console.log(secondBestList);
-
+    console.log("not ready");
+    console.log(overNotReadyList);
     var change = false;
 
     for (var i = 0; i < MAX; i++) {
       if (overNotReadyList[i]) {
-        document.getElementById('popup-text').innerText += "You have been non-Ready for " + (bestList[i].seconds / 60) + " minutes!";
+        document.getElementById('popup-text').innerText += "You have been non-Ready for " + (bestList[i].seconds / 60) + " minutes in queue " + i + "!\n";
         change = true;
       } else if (bestList[i].id == mainIdList[i]) {
-        document.getElementById('popup-text').innerText += "You are 1st in queue " + i + "!";
+        document.getElementById('popup-text').innerText += "You are 1st in queue " + i + "!\n";
         change = true;
       } else if (secondBestList[i].id == mainIdList[i]) {
-        document.getElementById('popup-text').innerText += "You are 2nd in queue " + i + "!";
+        document.getElementById('popup-text').innerText += "You are 2nd in queue " + i + "!\n";
         change = true;
       }      
     }
